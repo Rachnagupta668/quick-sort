@@ -1,0 +1,46 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    int []arr = {1,8,7,6,3,9,23,65};
+	    qs(arr,0,arr.length-1);
+	    System.out.println(Arrays.toString(arr));
+	    
+	    
+	}
+	public static void qs(int [] arr, int l, int r)
+	{
+	    if(l<r)
+	    {
+	        int pIndex = partition(arr, l,r);
+	        qs(arr,l,pIndex-1);
+	        qs(arr,pIndex+1,r);
+	    }
+	}
+	public static int partition(int []arr, int l, int r)
+	{
+	    int pivot = arr[l];
+	    int i =l;
+	    int j =r;
+	    while(i<j)
+	    {
+	    while(i<=r && arr[i]<=pivot){
+	        i++;
+	    }
+	    while( arr[j]>pivot){
+	        j--;
+	    }
+	    if(i<j)
+	    {
+	        int temp = arr[i];
+	        arr[i] =  arr[j];
+	        arr[j] = temp;
+	    }
+	    
+	}
+	int t = arr[l];
+	arr[l] = arr[j];
+	arr[j] = t;
+	return j;
+}
+}
